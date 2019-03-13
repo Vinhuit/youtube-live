@@ -23,7 +23,7 @@ app.get('/stream',
 function(req, res) {
   var link = req.query.link;
   var key = req.query.key;
-  var cmd = "bash stream.sh " + key + " " + link +">/dev/null";  
+  var cmd = "until ./streamedit.sh " + key + " " + link +";do :;done";
   console.log(cmd);
   console.log("Đã Live Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
   exec(cmd,{
