@@ -23,7 +23,8 @@ app.get('/stream',
 function(req, res) {
   var link = req.query.link;
   var key = req.query.key;
-  var cmd = "until ./stream.sh " + key + " " + link +";do :;done";
+  var device = req.query.device;
+  var cmd = "./stream.sh " + key + " " + link + " "+ device;
   console.log(cmd);
   console.log("Đã Live Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
   exec(cmd,{
