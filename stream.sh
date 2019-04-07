@@ -6,7 +6,7 @@ FILE=./$(basename $0).pid
 #./addoffline.sh $DEVICE
 #trap ' status_code=$(curl -k -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "[\"$1|$2|$3\"]" "http://myjsonserver-winiss.1d35.starter-us-east-1.openshiftapps.com/offline" --write-out %{http_code};  )' EXIT
 # Configurer youtube avec une résolution 720p. La vidéo n'est pas scalée.
-./addoffline.sh $1 $2 $3
+./addoffline.sh $1 $2 $DEVICE
 if [ ! -f input.mp4 ]; then
     echo "File not found!"
     ./youtube-dl "$2" -o input
