@@ -11,10 +11,10 @@ if [ ! -f input.mp4 ]; then
     echo "File not found!"
     ./youtube-dl "$2" -o input
     mv input* input.mp4
-    ./ffmpeg -re -stream_loop -1 -i "input.mp4" -filter_complex setpts=PTS/1 -vcodec libx264 -pix_fmt yuv420p -b:v 1000k -acodec libmp3lame -b:a 128k -ar 44100 -threads 0 -preset superfast -maxrate 1000k -bufsize 2500k -f flv -s 1280x720 "$1"  
+    pgrep ffmpeg ||./ffmpeg -re -stream_loop -1 -i "input.mp4" -filter_complex setpts=PTS/1 -vcodec libx264 -pix_fmt yuv420p -b:v 1000k -acodec libmp3lame -b:a 128k -ar 44100 -threads 0 -preset superfast -maxrate 1000k -bufsize 2500k -f flv -s 1280x720 "$1"  
     echo $! > $FILE
 else
-    ./ffmpeg -re -stream_loop -1 -i "input.mp4" -filter_complex setpts=PTS/1 -vcodec libx264 -pix_fmt yuv420p -b:v 1000k -acodec libmp3lame -b:a 128k -ar 44100 -threads 0 -preset superfast -maxrate 1000k -bufsize 2500k -f flv -s 1280x720 "$1"  
+    pgrep ffmpeg ||./ffmpeg -re -stream_loop -1 -i "input.mp4" -filter_complex setpts=PTS/1 -vcodec libx264 -pix_fmt yuv420p -b:v 1000k -acodec libmp3lame -b:a 128k -ar 44100 -threads 0 -preset superfast -maxrate 1000k -bufsize 2500k -f flv -s 1280x720 "$1"  
     echo $! > $FILE
 fi
 
