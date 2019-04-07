@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node server.js",
-    "test": "bash addoffline.sh $DEVICE"
+    "start":"node server.js && bash addoffline.sh $DEVICE",
+    "test": ""
   },
   "repository": {
     "type": "git",
