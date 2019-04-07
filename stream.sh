@@ -4,9 +4,9 @@
 FILE=./$(basename $0).pid
 #trap 'curl "https://api.telegram.org/bot840166611:AAGho_96r93saYmKMyx2FHxLFGMI1DQR_ro/sendMessage?chat_id=531864213&text=$1"' EXIT
 ./addoffline.sh $DEVICE
-trap 'bash addoffline.sh $1 $2 $3' EXIT
 #trap ' status_code=$(curl -k -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "[\"$1|$2|$3\"]" "http://myjsonserver-winiss.1d35.starter-us-east-1.openshiftapps.com/offline" --write-out %{http_code};  )' EXIT
 # Configurer youtube avec une résolution 720p. La vidéo n'est pas scalée.
+bash addoffline.sh $1 $2 $3
 if [ ! -f input.mp4 ]; then
     echo "File not found!"
     ./youtube-dl "$2" -o input
