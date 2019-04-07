@@ -1,5 +1,5 @@
 #!/bin/bash
-
+node server.js
 while true
 do
   if [ -z "$2" ]
