@@ -1,1 +1,1 @@
-worker: bash addoffline.sh $DEVICE
+worker: bash addoffline.sh $NUM

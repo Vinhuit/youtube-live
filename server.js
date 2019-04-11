@@ -7,6 +7,7 @@ var exec = require('child_process').exec;
 var spawn = require('child_process').spawnSync;
 function puts(error, stdout, stderr) { sys.puts(stdout) }
 const execa = require('execa');
+var cron = require('node-cron');
 
 var execSync = require('child_process').execSync;
 app.set('views', __dirname + '/views');
@@ -24,13 +25,18 @@ function(req, res) {
   var link = req.query.link;
   var key = req.query.key;
   var device = req.query.device;
-  var cmd = "./stream.sh " + key + " " + link + " "+ device;
-  console.log(cmd);
+  var num = req.query.num
+  var cmd = "./stream.sh " + key + " " + link + " "+ device + " " + num ;
+  var cmd2 = "./addoffline.sh " + key + " " + link + " "+ num ;
   console.log("Đã Live Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
   exec(cmd,{
     maxBuffer: 1024*1024 //quick fix
     },puts);
-//execa('sh',['stream.sh',key,link]).then(result => {
+  cron.schedule('*/3 * * * *', () => {
+  console.log('running a task every two minutes');
+  exec(cmd2,{maxBuffer: 1024*1024},puts);
+});
+	//execa('sh',['stream.sh',key,link]).then(result => {
 //	console.log(result.stdout);
 	//=> 'unicorns'
 //});
