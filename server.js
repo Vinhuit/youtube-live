@@ -32,9 +32,6 @@ function(req, res) {
   exec(cmd,{
     maxBuffer: 1024*1024 //quick fix
     },puts);
-  cron.schedule('*/3 * * * *', () => {
-  console.log('running a task every two minutes');
-  exec(cmd2,{maxBuffer: 1024*1024},puts);});
 });
 app.get('/schedule', 
 function(req, res) {
