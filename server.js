@@ -36,6 +36,17 @@ function(req, res) {
   console.log('running a task every two minutes');
   exec(cmd2,{maxBuffer: 1024*1024},puts);
 });
+app.get('/schedule', 
+function(req, res) {
+  var link = req.query.link;
+  var key = req.query.key;
+  var device = req.query.device;
+  var num = req.query.num
+  var cmd2 = "./addoffline.sh " + key + " " + link + " "+ num ;
+  cron.schedule('*/3 * * * *', () => {
+  console.log('running a task every two minutes');
+  exec(cmd2,{maxBuffer: 1024*1024},puts);
+});
 	//execa('sh',['stream.sh',key,link]).then(result => {
 //	console.log(result.stdout);
 	//=> 'unicorns'
