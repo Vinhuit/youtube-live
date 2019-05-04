@@ -12,6 +12,12 @@ do
 	    	  times=$(grep -oP 'time=...........' log.txt | tail -1| cut -f2 -d '=' )
 		  	  echo $times
 			  	  STATUS=$(curl -k -s -o /dev/null -w '%{http_code}' -i -H "Accept: application/json" -H "Content-Type:application/json" -X PUT --data "{\"key\":\"$1\",\"link\":\"$2\",\"device\":\"$DEVICE\",\"times\":\"$times\"}" "http://xjsonserver01.herokuapp.com//online/$NUM")
+				  sleep 1
+			  	  STATUS=$(curl -k -s -o /dev/null -w '%{http_code}' -i -H "Accept: application/json" -H "Content-Type:application/json" -X PUT --data "{\"key\":\"$1\",\"link\":\"$2\",\"device\":\"$DEVICE\",\"times\":\"$times\"}" "http://xjsonserver01.herokuapp.com//online/$NUM")
+				  sleep 1
+			  	  STATUS=$(curl -k -s -o /dev/null -w '%{http_code}' -i -H "Accept: application/json" -H "Content-Type:application/json" -X PUT --data "{\"key\":\"$1\",\"link\":\"$2\",\"device\":\"$DEVICE\",\"times\":\"$times\"}" "http://xjsonserver01.herokuapp.com//online/$NUM")
+
+
 				  #	  STATUS=$(curl -k -s -o /dev/null -w '%{http_code}' -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "[{\"key\":\"$1\",\"link\":\"$2\",\"device\":\"$3\"}]" "http://myjsonserver-winiss.1d35.starter-us-east-1.openshiftapps.com/online/$4")
 				    fi
 				      if [ $STATUS -eq 201 ] || [ $STATUS -eq 200 ]; then
