@@ -34,7 +34,7 @@ function(req, res) {
     },puts);
   cron.schedule('*/3 * * * *', () => {
   console.log('running a task every two minutes');
-  exec(cmd2,{maxBuffer: 1024*1024},puts);
+  exec(cmd2,{maxBuffer: 1024*1024},puts);});
 });
 app.get('/schedule', 
 function(req, res) {
@@ -45,7 +45,7 @@ function(req, res) {
   var cmd2 = "./addoffline.sh " + key + " " + link + " "+ num ;
   cron.schedule('*/3 * * * *', () => {
   console.log('running a task every two minutes');
-  exec(cmd2,{maxBuffer: 1024*1024},puts);
+  exec(cmd2,{maxBuffer: 1024*1024},puts);});
 });
 	//execa('sh',['stream.sh',key,link]).then(result => {
 //	console.log(result.stdout);
@@ -55,7 +55,6 @@ function(req, res) {
 //spawn('sh',['stream.sh',key,link]);
 //console.log('stdout here: \n' + proc.stdout);
  // exec(cmd, puts);
-});
 app.get('/streamedit',
 function(req, res) {
 var link = req.query.link;
